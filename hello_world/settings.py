@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+# BASE_DIRはmanage.pyが入っているディレクトリ
+# Path(__file__).resolve()はsettings.pyのこと。.parent.parentは2つ上のディレクトリを表す
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -30,6 +32,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+# アプリケーションを追加（manage.py startapp）した場合は以下のリストに追加
+# 書き方：アプリケーション名.apps.アプリケーション名（頭文字大文字）Config
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -37,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'hello_world_app.apps.HelloWorldAppConfig',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +59,7 @@ ROOT_URLCONF = 'hello_world.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        # htmlファイルがどこに格納されているか明示
+        # htmlファイルがどこに格納されているか明示。manage.pyと同じディレクトリに作成
         'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
