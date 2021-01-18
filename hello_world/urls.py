@@ -9,6 +9,6 @@ urlpatterns = [
     path('hello_world2/', HelloWorldClass.as_view()),
     # アプリへリクエストを繋ぎこむ
     # アプリのディレクトリにurls.pyが生成されないため、自分でつくるのが一般的
-    path('', include('hello_world_app.urls')),
+    path('app/', include('hello_world_app.urls')),
 
 ]
