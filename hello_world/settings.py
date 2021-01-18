@@ -22,11 +22,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# ユーザーアカウントのパスワードを生成するためのキー　デプロイ時は非公開にする
 SECRET_KEY = 'x5%326(_a=ce$&y@o8v0)2)3p)na-rp1eonq1p7wu((mrxv6h@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# エラー時にブラウザ上でエラーの詳細を表示する
+# デプロイ時にエラー内容が他者に見られると困るので、開発時だけTrueにする
 DEBUG = True
 
+# サーバの情報を入れる変数
 ALLOWED_HOSTS = []
 
 
@@ -44,6 +48,7 @@ INSTALLED_APPS = [
     'hello_world_app.apps.HelloWorldAppConfig',
 ]
 
+# ブラウザとサーバの中間処理　主にセキュリティ関係
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -79,6 +84,7 @@ WSGI_APPLICATION = 'hello_world.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# 使用するデータベースを記載　デフォルトはsqlite3
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -90,6 +96,7 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
+# passwordのバリデーションを行う
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -109,8 +116,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
+# 言語を指定
 LANGUAGE_CODE = 'en-us'
 
+# タイムゾーンを指定　現在時刻を処理する等の基準になる
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
